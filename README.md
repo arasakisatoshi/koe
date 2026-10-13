@@ -17,7 +17,7 @@ FLEURS 日本語の読み上げ音声 100 発話（22.7 分）で、文字誤り
 | Whisper large-v3-turbo（mlx-whisper） | 10.4% | 74 秒 |
 | DictationTranscriber（従来の音声入力系） | 12.5% | 59 秒 |
 
-読み上げ音声での結果なので、普段の話し言葉では数字が変わります。
+読み上げ音声での結果なので、普段の話し言葉では数字が変わります。評価データは [FLEURS](https://huggingface.co/datasets/google/fleurs)（Google、CC BY 4.0）を使い、結果の数字だけを載せています（音声・文章は同梱していません）。
 
 ## 動く環境
 
