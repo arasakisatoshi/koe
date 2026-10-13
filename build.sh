@@ -2,7 +2,9 @@
 # Koe.app をこのフォルダに作る。作り直すとアクセシビリティの許可を入れ直す必要がある。
 set -e
 cd "$(dirname "$0")"
-APP=Koe.app
+# iCloud同期フォルダなどではFinder情報が付いて署名に失敗するので、一時フォルダで作ってから移す
+WORK=$(mktemp -d)
+APP=$WORK/Koe.app
 mkdir -p $APP/Contents/MacOS
 xcrun swiftc -O -swift-version 5 main.swift -o $APP/Contents/MacOS/Koe
 cat > $APP/Contents/Info.plist <<PL
@@ -20,4 +22,7 @@ cat > $APP/Contents/Info.plist <<PL
 </dict></plist>
 PL
 codesign --force --sign - $APP
-echo "built: $(pwd)/$APP"
+rm -rf Koe.app
+ditto $APP Koe.app
+rm -rf $WORK
+echo "built: $(pwd)/Koe.app"
